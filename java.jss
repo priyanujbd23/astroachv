@@ -1,28 +1,29 @@
-const logo = document.getElementById("logoWrapper");
-const intro = document.getElementById("intro");
-const logoFinal = document.getElementById("logoFinal");
-const cards = document.querySelectorAll(".card");
+// Logo scroll animation
+const logoContainer = document.getElementById('logo-container');
+const achievements = document.getElementById('achievements');
 
-let moved = false;
-
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
+  const maxScroll = window.innerHeight / 2; // adjust speed
+  const logoTop = Math.max(20, 50 - (scrollY / maxScroll) * 30); // move up
+  const logoLeft = 50 + (scrollY / maxScroll) * 20; // move right
 
-  if (scrollY > 60 && !moved) {
-    logoFinal.appendChild(logo);
-    logo.style.transform = "scale(0.85)";
-    intro.style.display = "none";
-    moved = true;
-  }
+  logoContainer.style.top = logoTop + '%';
+  logoContainer.style.left = logoLeft + '%';
+});
 
-  cards.forEach((card, index) => {
-    const triggerPoint = window.innerHeight - 100;
-    const cardTop = card.getBoundingClientRect().top;
+// Slider functionality
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
 
-    if (cardTop < triggerPoint) {
-      setTimeout(() => {
-        card.classList.add("show");
-      }, index * 120);
-    }
-  });
+document.getElementById('next').addEventListener('click', () => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
 });
