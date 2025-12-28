@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AstroClub Achievements</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- Cosmic Background GIF -->
+  <div class="background-gif"></div>
 
-  <!-- INTRO -->
-  <section class="intro" id="intro">
-    <div class="logo-wrapper" id="logoWrapper">
-      <img src="logo.png" alt="AstroClub Logo" />
+  <!-- Logo -->
+  <div id="logo-container">
+    <img src="logo.png" alt="AstroClub Logo" id="logo">
+  </div>
+
+  <!-- Achievements Section -->
+  <section id="achievements">
+    <h1>Achievements</h1>
+    <div class="tiles-container">
+      <div class="tile">Achievement 1</div>
+      <div class="tile">Achievement 2</div>
+      <div class="tile">Achievement 3</div>
+      <div class="tile">Achievement 4</div>
     </div>
-  </section>
 
-  <!-- MAIN CONTENT -->
-  <section class="main" id="main">
-    <header class="header">
-      <div class="logo-final" id="logoFinal"></div>
-      <h1>Achievements</h1>
-      <p>Tracing our journey across the cosmos</p>
-    </header>
-
-    <section class="achievements">
-      <div class="card">National Astronomy Olympiad Finalists</div>
-      <div class="card">Astrophotography Exhibition</div>
-      <div class="card">Meteor Observation Campaign</div>
-      <div class="card">Inter-College Astro Quiz Champions</div>
-    </section>
+    <!-- Slides Section -->
+    <div class="slider">
+      <div class="slide active">Slide 1</div>
+      <div class="slide">Slide 2</div>
+      <div class="slide">Slide 3</div>
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
   </section>
 
   <script src="script.js"></script>
