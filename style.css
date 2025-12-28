@@ -10,6 +10,8 @@ body, html { font-family: 'Arial', sans-serif; height: 100%; color: #fff; overfl
   background: linear-gradient(to bottom, #0d1b2a 0%, rgba(13,27,42,0) 50%), 
               url('cosmic.gif') center/cover no-repeat;
   z-index: -1;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center center;
 }
 
 
