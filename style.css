@@ -7,9 +7,11 @@ body, html { font-family: 'Arial', sans-serif; height: 100%; color: #fff; overfl
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: url('cosmic.gif') center/cover no-repeat;
+  background: linear-gradient(to bottom, #0d1b2a 0%, rgba(13,27,42,0) 50%), 
+              url('cosmic.gif') center/cover no-repeat;
   z-index: -1;
 }
+
 
 /* Logo */
 #logo-container {
@@ -18,6 +20,9 @@ body, html { font-family: 'Arial', sans-serif; height: 100%; color: #fff; overfl
   transform: translate(-50%, -50%);
   transition: all 1s ease;
   z-index: 10;
+  background: #0d1b2a; /* dark blue behind logo */
+  border-radius: 50%;
+  padding: 20px;
 }
 
 #logo { width: 150px; }
