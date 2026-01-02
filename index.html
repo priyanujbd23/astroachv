@@ -6,14 +6,15 @@
     <title>Astro Scroll Experience | Achievements</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom Scrollbar */
         body::-webkit-scrollbar {
             width: 8px;
         }
         body::-webkit-scrollbar-track {
-            background: #000;
+            background: #2C3E50;
         }
         body::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: #95A5A6;
             border-radius: 4px;
         }
 
@@ -30,7 +31,7 @@
 
         .star {
             position: absolute;
-            background: white;
+            background: #F4F4F9;
             border-radius: 50%;
             opacity: 0.5;
             animation: twinkle var(--duration) infinite ease-in-out;
@@ -38,7 +39,7 @@
 
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(1); filter: blur(0px); }
-            50% { opacity: 1; transform: scale(1.5); filter: blur(1px) drop-shadow(0 0 5px #fff); }
+            50% { opacity: 0.8; transform: scale(1.5); filter: blur(1px) drop-shadow(0 0 5px #F4F4F9); }
         }
 
         /* Rotated Background GIF */
@@ -54,42 +55,43 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            mix-blend-mode: overlay; /* Blends better with the new background color */
         }
 
         /* Glass Panel Styling */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(244, 244, 249, 0.05);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(149, 165, 166, 0.3); /* #95A5A6 */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .glass-panel:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 211, 238, 0.1);
+            background: rgba(244, 244, 249, 0.1);
+            border: 1px solid #BDC3C7;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
         }
 
         .achievement-tag {
             font-size: 0.7rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #22d3ee;
+            color: #BDC3C7; /* Secondary Font */
             margin-bottom: 0.5rem;
             display: block;
             font-weight: 700;
         }
     </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden m-0 p-0">
+<body class="bg-[#2C3E50] text-[#F4F4F9] overflow-x-hidden m-0 p-0">
 
     <div id="scroll-track" style="height: 180vh;"></div>
 
     <div id="sticky-viewport" class="fixed inset-0 w-full h-full pointer-events-none z-10 flex flex-col items-center">
         
         <div id="bg-layer" class="absolute inset-0 transition-all duration-500"
-             style="background: radial-gradient(circle at center, #000000 0%, #000000 100%);">
+             style="background: radial-gradient(circle at center, #2C3E50 0%, #1a252f 100%);">
              
              <div id="star-field" class="stars-container"></div>
              
@@ -102,32 +104,32 @@
             <img 
                 src="logo.png" 
                 alt="Astro Logo" 
-                class="w-32 h-32 object-contain drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]"
+                class="w-32 h-32 object-contain drop-shadow-[0_0_20px_rgba(244,244,249,0.4)]"
                 onerror="this.style.display='none'; document.getElementById('main-logo').style.display='block';"
             />
 
-            <svg id="main-logo" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-32 h-32 text-cyan-400">
-                <circle cx="12" cy="12" r="6" fill="currentColor" class="text-cyan-500/10" />
-                <ellipse cx="12" cy="12" rx="10" ry="3" transform="rotate(-20 12 12)" stroke="white" />
+            <svg id="main-logo" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-32 h-32 text-[#BDC3C7]">
+                <circle cx="12" cy="12" r="6" fill="currentColor" class="opacity-20" />
+                <ellipse cx="12" cy="12" rx="10" ry="3" transform="rotate(-20 12 12)" stroke="#F4F4F9" />
             </svg>
         </div>
         
         <nav id="nav-header" class="absolute top-0 w-full p-6 flex justify-between items-center opacity-0 transition-opacity duration-500 z-20">
-            <div class="text-cyan-400 font-bold tracking-widest text-xl">ASTRO CLUB</div>
+            <div class="text-[#F4F4F9] font-bold tracking-widest text-xl">ASTRO CLUB</div>
         </nav>
     </div>
 
     <main class="relative z-20 w-full pb-24">
         <div class="h-[70vh]"></div>
         
-        <div class="bg-black/40 backdrop-blur-md min-h-screen w-full px-6 py-16 md:px-20 border-t border-white/10">
+        <div class="bg-[#2C3E50]/60 backdrop-blur-md min-h-screen w-full px-6 py-16 md:px-20 border-t border-[#95A5A6]/30">
             
             <div class="max-w-7xl mx-auto mb-20 text-center">
-                <h2 class="text-5xl md:text-7xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-cyan-500 tracking-tight">
+                <h2 class="text-5xl md:text-7xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[#F4F4F9] to-[#BDC3C7] tracking-tight">
                     OUR ACHIEVEMENTS
                 </h2>
-                <div class="h-1 w-24 bg-cyan-500 mx-auto mb-8 rounded-full"></div>
-                <p class="text-slate-400 max-w-3xl mx-auto text-xl font-light leading-relaxed">
+                <div class="h-1 w-24 bg-[#95A5A6] mx-auto mb-8 rounded-full"></div>
+                <p class="text-[#BDC3C7] max-w-3xl mx-auto text-xl font-light leading-relaxed">
                     A legacy of exploration and excellence. Pushing the boundaries of student research and competitive astronomy.
                 </p>
             </div>
@@ -136,44 +138,44 @@
                 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">Research & Excellence</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">NIUS Astronomy Camp</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">For 3 consecutive years, members were selected for the prestigious program by <b>HBCSE & TIFR</b>—India's most competitive student research platform.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">NIUS Astronomy Camp</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">For 3 consecutive years, members were selected for the prestigious program by <b>HBCSE & TIFR</b>—India's most competitive student research platform.</p>
                 </div>
 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">Academic Milestone</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">Competitive Prowess</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Exceptional milestones including <b>AIR 45 in IIT JAM Physics 2025</b>. Alumni now at UCL, IIT Delhi, IIT Mandi, and the University of Bonn.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">Competitive Prowess</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">Exceptional milestones including <b>AIR 45 in IIT JAM Physics 2025</b>. Alumni now at UCL, IIT Delhi, IIT Mandi, and the University of Bonn.</p>
                 </div>
 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">Competition Winners</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">IIT Mandi Xpecto 2025</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Secured <b>Second and Third Prizes</b> in the Astronomy Quiz, outperforming teams from top technical institutions across India.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">IIT Mandi Xpecto 2025</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">Secured <b>Second and Third Prizes</b> in the Astronomy Quiz, outperforming teams from top technical institutions across India.</p>
                 </div>
 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">First Place</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">Spacecraft 3.0 Ideathon</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Won <b>First Prize</b> at Ashoka University for a business model on orbital sustainability and space debris mitigation.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">Spacecraft 3.0 Ideathon</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">Won <b>First Prize</b> at Ashoka University for a business model on orbital sustainability and space debris mitigation.</p>
                 </div>
 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">Citizen Science</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">Asteroid Hunt Campaign</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Collaborated with <b>IASC</b> to lead a campaign at KMC, resulting in <b>9 preliminary asteroid discoveries</b> by our student teams.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">Asteroid Hunt Campaign</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">Collaborated with <b>IASC</b> to lead a campaign at KMC, resulting in <b>9 preliminary asteroid discoveries</b> by our student teams.</p>
                 </div>
 
                 <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group">
                     <span class="achievement-tag">Global Research</span>
-                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">Top Tier Internships</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Hands-on research experience at premier institutions including <b>IIT Bombay, IIT Indore, and the University of Porto</b>.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-[#F4F4F9]">Top Tier Internships</h3>
+                    <p class="text-[#BDC3C7] text-sm leading-relaxed">Hands-on research experience at premier institutions including <b>IIT Bombay, IIT Indore, and the University of Porto</b>.</p>
                 </div>
 
-                <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group md:col-span-2 lg:col-span-3 border-cyan-500/20">
+                <div class="glass-panel rounded-3xl p-8 transform hover:-translate-y-3 group md:col-span-2 lg:col-span-3 border-[#95A5A6]/20">
                     <span class="achievement-tag">Special Recognition</span>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Rocket Launch Resilience</h3>
-                    <p class="text-slate-400 text-base leading-relaxed mb-4">Received a <b>Special Mention</b> in the water-powered rocket competition from <b>Nigar Shaji</b> (Mission Director of Aditya-L1). Recognized for technical promise and recovery from failure.</p>
+                    <h3 class="text-2xl font-bold mb-3 text-[#F4F4F9]">Rocket Launch Resilience</h3>
+                    <p class="text-[#BDC3C7] text-base leading-relaxed mb-4">Received a <b>Special Mention</b> in the water-powered rocket competition from <b>Nigar Shaji</b> (Mission Director of Aditya-L1). Recognized for technical promise and recovery from failure.</p>
                 </div>
             </div>
             
@@ -196,7 +198,7 @@
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                const size = Math.random() * 3 + 1;
+                const size = Math.random() * 2 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.left = `${Math.random() * 100}%`;
@@ -224,12 +226,16 @@
             logoWrapper.style.top = `${currentTop}px`;
             logoWrapper.style.transform = `translateY(-50%) scale(${currentScale})`;
 
-            const b = Math.round(0 + (progress * 80));
-            const colorString = `rgb(0, 5, ${b})`;
-            bgLayer.style.background = `radial-gradient(circle at center, ${colorString} 0%, #000000 100%)`;
+            // Transitions from Darker Blue to #2C3E50
+            const r = Math.round(26 + (progress * (44 - 26))); // 1A to 2C
+            const g = Math.round(37 + (progress * (62 - 37))); // 25 to 3E
+            const b = Math.round(47 + (progress * (80 - 47))); // 2F to 50
+            
+            const colorString = `rgb(${r}, ${g}, ${b})`;
+            bgLayer.style.background = `radial-gradient(circle at center, ${colorString} 0%, #1a252f 100%)`;
             
             if (progress > 0.6) {
-                bgGif.style.opacity = (progress - 0.6) * 1.5;
+                bgGif.style.opacity = (progress - 0.6) * 1.2;
             } else {
                 bgGif.style.opacity = 0;
             }
